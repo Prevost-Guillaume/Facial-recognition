@@ -1,4 +1,4 @@
-﻿## Présentation du projet
+## Présentation du projet
 ### Exposition de la proposition
 Le but de ce projet est de développer un système de connexion par reconnaissance faciale. 
 
@@ -28,13 +28,11 @@ Notre solution finale comprend les fonctionnalités suivantes.
 ### Maquettes
 Voici les aperçus de la solution que nous avons développé.
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.001.png)![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.002.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.002.png>
 
 *Page de création de compte*
 
-![Une image contenant texte
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.003.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.003.png>
 
 *Page de login au site internet*
 
@@ -49,22 +47,6 @@ Le Machine Learning, appelé apprentissage automatique, est défini par un de se
 Le DeepLearning, ou apprentissage profond, est une sous-catégorie du Machine Learning dans laquelle on utilise des réseaux neuronaux. A l’origine inspiré des neurones biologiques, les algorithmes de réseaux de neurones sont capables de réaliser n’importe quelle tâche. 
 
 
-
-**Intelligence Artificielle**
-
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.004.png)
-
-
-
-**Machine Learning**
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.005.png)
-
-
-
-**DeepLearning**
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.006.png)
-
-
 Ainsi, un réseau de neurones peut être capable de jouer aux échecs, de classifier différentes images, ou encore de reconnaître un chiffre écrit à la main. Les applications sont vastes, et l’une d’entre elles est la Computer Vision (vision par ordinateur), elle consiste à « donner des yeux » à un ordinateur, c’est-à-dire à lui apprendre à voir et interpréter le contenu d’une image. Dans le cadre de notre projet, notre objectif est d’apprendre à un programme à reconnaître une personne sur une image, c’est donc le principe de Computer Vision qu’on met utilise. 
 
 Pour cela, nous avons décidé de créer nous-mêmes l’architecture de nos différents modèles. En Machine Learning, un modèle est un algorithme qui apprend à réaliser une tâche spécifique donnée à partir d’un ensemble de données, appelé dataset. L’objectif est de donner un ensemble d’entraînement au modèle (trainset), et de lui donner la réponse qu’il doit sortir, afin qu’il puisse apprendre à donner la bonne sortie. Ensuite, on teste le modèle sur un testset, pour voir s’il est capable de prédire une sortie en connaissant uniquement l’entrée. 
@@ -75,11 +57,11 @@ La complexité de notre projet repose donc sur le fait que nous créons tout nou
 
 *Echantillon des datasets utilisés*
 
-![Une image contenant texte, posant
 
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.007.jpeg)![Artificial Intelligence + GANs can create fake celebrity faces | by  Viridiana Romero Martinez | DataDrivenInvestor](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.008.png)
+|**LFW**|**CelebA**|
+| - | - |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/LFW.png width=200 height=200> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/celebA.png width=200 height=200> |
 
-`                         `LFW                                                            CelebA
 
 La Reconnaissance Faciale peut se décomposer en deux exercices. Tout d’abord, il faut extraire les visages présents sur une image. C’est la phase de détection. Vient ensuite la phase de reconnaissance, dans laquelle le but est de déterminer à qui le visage extrait appartient. Pour ce faire, nous réalisons ce qu’on appelle un pipeline. Un pipeline est, en deep-learning, une série de transformations auxquelles on va soumettre une image. 
 
@@ -89,7 +71,7 @@ Regardons en détail les modèles de reconnaissance et de détection.
 
 ### Modèles de détection
 ###### Première proposition
-`           	`Le but du modèle de détection est d’extraire les différentes têtes présentes sur une photo. Pour cela, nous avons testé différents modèles de réseaux de neurones convolutifs (cnn). Les réseaux de neurones convolutifs sont un type de réseau de neurones particulièrement adapté aux images. Il fonctionne en appliquant des filtres successifs sur l’image d’entrée.
+Le but du modèle de détection est d’extraire les différentes têtes présentes sur une photo. Pour cela, nous avons testé différents modèles de réseaux de neurones convolutifs (cnn). Les réseaux de neurones convolutifs sont un type de réseau de neurones particulièrement adapté aux images. Il fonctionne en appliquant des filtres successifs sur l’image d’entrée.
 
 La première méthode que nous avons implémentée se base sur le principe de la fenêtre glissante. La tâche de détection est divisée en deux tâches plus simples :
 
@@ -102,35 +84,24 @@ Cependant, avec cette méthode, une seule et même tête était détectée plusi
 
 |**Avant la nonMaxSuppression**|**Après la nonMaxSuppression**|
 | - | - |
-|![Une image contenant intérieur, mur, personne, plafond
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nnms1.png width=300 height=300> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nms1.png width=300 height=300> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nnms2.png width=300 height=350> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nms2.png width=300 height=350> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nnms3.png width=300 height=300> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nms3.png width=300 height=300> |
 
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.009.png)|![Une image contenant personne, intérieur, mur, plafond
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.010.png)|
-|![Une image contenant personne, intérieur, mur, regardant
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.011.png)|![Une image contenant personne, intérieur
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.012.png)|
-|![Une image contenant personne, intérieur, mur, homme
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.013.png)|![Une image contenant personne, intérieur, mur
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.014.png)|
 
 Nous n’avons cependant pas retenu cette solution de fenêtre glissantes en raison de sa lenteur. Effectivement, il faut compter entre 1.2 et 1.4 secondes pour détecter les images sur la photo. Une telle lenteur s’explique en particulier par les nombreuses sous-images à classifier (il faut plus de 0.5s pour classifier les 324 sous-images ici), et l’algorithme de non-max suppression, qui prend entrer 0.1 et 0.15 secondes.
 
 ####### *FACE CLASSIFIER*
 Voici l’architecture utilisée pour le modèle de classification. Le principe est de réduire progressivement la dimension de l’image grâce à des couches de max-Pooling et des couches de convolutions. Ensuite, la décision en tant que telle est prise par les trois couches denses. Les deux perceptrons de la dernière couche valent chacun la probabilité que l’image soit une tête ou non.
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.015.png)
-\*
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model1.png>
 
 
 ####### *SLIDING WINDOWS*
 En résumé, le principe de la sliding windows est expliqué ci-dessous : Une fenêtre parcourt l’image pour la découper en sous-images. Cet ensemble d’images est ensuite donné au classifier, puis au non-max-suppresseur. Il est ainsi possible de déterminer l’emplacement d’une tête.
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.015.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/pika1.png>
+
 ###### ** Deuxième proposition.
 `	`La deuxième solution choisie fut de créer un modèle - nommé Region Proposal Network (RPN) – qui détermine en une seule fois l’emplacement des têtes sur une image. 
 
@@ -148,11 +119,7 @@ Cette méthode étant plus précise et plus rapide (il faut de 0.14 à 0.17s pou
 
 |*Image fournie au modèle*|*Sortie du modèle*|*Traitement de la sortie*|
 | :-: | :-: | :-: |
-|![Une image contenant personne, mur, intérieur, jeune
 
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.016.png)|![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.017.png)|![Une image contenant personne, intérieur, mur
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.018.png)|
 
 
 
@@ -162,7 +129,7 @@ Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f1
 ####### *REGION PROPOSAL NETWORK*
 Ce réseau utilise une architecture de type U-net. C’est-à-dire qu’il va progressivement diminuer la taille de l’image grâce à des max-pooling, puis réaugmenter la taille de l’image par paliers. La spécificité de ce réseau est qu’il possède des connexions résiduelles entre les images encodées et les images décodées de la même taille. Ces connexions permettent de ne pas perdre d’informations par la compression de l’image et ainsi d’obtenir des frontières bien délimitées. 
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.015.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model2.png>
 ### Modèles de reconnaissance
 Concernant la partie de reconnaissance, nous avons également expérimenté plusieurs modèles avant d’obtenir un modèle suffisamment performant.
 
@@ -173,13 +140,14 @@ Si l’encoder fonctionne bien, il suffit de calculer la distance euclidienne en
 Le problème majeur avec ce principe de reconnaissance survient dans l’entrainement de l’encoder. Effectivement, ce n’est pas de l’apprentissage supervisé : nous ne connaissons pas les vecteurs à l’avance pour entrainer le modèle dessus
 
 ###### AUTOENCODER
-La première idée que nous avons eue pour entrainer un tel encoder fut d’entrainer un auto-encoder et d’en extraire l’encoder. Un auto-encoder est un modèle qui apprend à compresser une image en un vecteur de dimension n, puis à décompresser cette image pour en retrouver l’originale. Il est entrainé avec, en entrée, une image, et en sortie la même image. C’est la spécificité du modèle.
+La première idée que nous avons eue pour entrainer un tel encoder fut d’entrainer un auto-encoder et d’en extraire l’encoder. Un auto-encoder est un modèle qui apprend à compresser une image en un vecteur de dimension n, puis à décompresser cette image pour en retrouver l’originale. Il est entrainé avec, en entrée, une image, et en sortie la même image. C’est la spécificité du modèle.  
 
-Ainsi, un tel auto-encoder apprend à transformer une image en un vecteur suffisamment significatif pour pouvoir reconstruire l’image avec. Une idée intuitive de ce vecteur est qu’il correspond à une liste de caractéristiques spécifiques (couleur des yeux, forme de la mâchoire, lunettes ou non, etc.). 
+Ainsi, un tel auto-encoder apprend à transformer une image en un vecteur suffisamment significatif pour pouvoir reconstruire l’image avec. Une idée intuitive de ce vecteur est qu’il correspond à une liste de caractéristiques spécifiques (couleur des yeux, forme de la mâchoire, lunettes ou non, etc.).  
 
-Nous utilisons en entrée des images de taille 128\*128\*3 et au centre un vecteur de taille 100. Il y a donc une compression par un facteur 491. Cette architecture permet donc de construire et entrainer un encoder qui transforme une image en un vecteur plein de sens. Il est naturel de penser qu’une même personne a des vecteurs encodés grâce à ce modèle assez similaires
+Nous utilisons en entrée des images de taille 128\*128\*3 et au centre un vecteur de taille 100. Il y a donc une compression par un facteur 491. Cette architecture permet donc de construire et entrainer un encoder qui transforme une image en un vecteur plein de sens. Il est naturel de penser qu’une même personne a des vecteurs encodés grâce à ce modèle assez similaires  
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.019.png)Cependant, le vecteur encodé ne sera pas spécifique à la tâche de reconnaissance et prête trop attention aux informations non nécessaires pour la détection mais importantes pour la reconstitution de l’image, comme l’orientation du visage. Effectivement, l’orientation du visage est importante pour pouvoir reconstruire le visage fidèlement, mais pas nécessaire pour la reconnaissance du visage.
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model3.png>  
+Cependant, le vecteur encodé ne sera pas spécifique à la tâche de reconnaissance et prête trop attention aux informations non nécessaires pour la détection mais importantes pour la reconstitution de l’image, comme l’orientation du visage. Effectivement, l’orientation du visage est importante pour pouvoir reconstruire le visage fidèlement, mais pas nécessaire pour la reconnaissance du visage.  
 
 Voyons quelques exemples de sorties de l’autoencoder entrainé. 
 
@@ -187,38 +155,19 @@ Voyons quelques exemples de sorties de l’autoencoder entrainé.
 
 |**Entrée de l’autoencoder**|**Sortie de l’autoencoder**|
 | - | - |
-|![Une image contenant texte
 
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.020.png)|![Une image contenant trouble, fermer, flou
 
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.021.png)|
-|![Une image contenant texte, intérieur, personne, souriant
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.022.png)|![Une image contenant intérieur, fermer, flou
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.023.png)|
-|![Une image contenant personne, intérieur, posant, souriant
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.024.png)|![Une image contenant trouble, flou
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.025.png)|
-|![Une image contenant personne, souriant, posant, intérieur
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.026.png)|![Une image contenant intérieur, fermer
-
-Description générée automatiquement](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.027.png)|
-
-La compression affecte fortement la qualité de l’image de sortie, mais l’information générale de position du visage, la forme de la bouche, la place des yeux, etc. est conservée.
+La compression affecte fortement la qualité de l’image de sortie, mais l’information générale de position du visage, la forme de la bouche, la place des yeux, etc. est conservée.  
 
 
 
 
-###### ` `SIAMESE NETWORK
+###### SIAMESE NETWORK
 Le deuxième modèle que nous avons implémenté est un « siamese network » ou « réseau siamois ». Son nom provient des deux entrées en parallèle qu’il possède. Les deux images en entrée sont encodées avec le même encoder, et on calcule ensuite la distance euclidienne entre les deux vecteurs encodés. 
 
-Lors de la phase d’entraînement, on donne en entrée soit deux images de deux personnes identiques, soit deux différentes, et le but est de minimiser l’erreur, en prédisant des distances petites pour deux images de la même personne, et à l’inverse des distances grandes lorsque ce sont deux personnes différentes. Lors de cette phase, les poids de l’encoder sont ajustés afin de minimiser la fonction coût et donc de répondre au mieux à cette tâche
+Lors de la phase d’entraînement, on donne en entrée soit deux images de deux personnes identiques, soit deux différentes, et le but est de minimiser l’erreur, en prédisant des distances petites pour deux images de la même personne, et à l’inverse des distances grandes lorsque ce sont deux personnes différentes. Lors de cette phase, les poids de l’encoder sont ajustés afin de minimiser la fonction coût et donc de répondre au mieux à cette tâche.  
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.015.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model4.png>  
 
 
 ###### MODEL FACENET
@@ -227,9 +176,9 @@ Après avoir testé le siamese network, nous avons décidé d’utiliser une nou
 
 Comme pour le siamese network, on utilise le même encoder pour encoder les différentes images d’entrée. On calcule ensuite l’erreur de notre modèle en utilisant un « triplet loss ». Cette fonction coût donne 0 si la distance entre l’anchor et le positive est suffisamment inférieure comparée à la distance entre l’anchor et le négative. Ainsi, lors de l’entraînement, le modèle apprend à prédire de grandes distances lorsque les personnes sont différentes, et de petites distances dans le cas contraire. La force de ce modèle réside dans le fait qu’il minimise la distance entre deux personnes identiques en même temps qu’il maximise la distance entre deux personnes différentes.
 
-Ce modèle est entrainé avec trois images en entrée, et 0 en sortie, quelles que soient les images.
+Ce modèle est entrainé avec trois images en entrée, et 0 en sortie, quelles que soient les images.  
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.015.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model5.png>  
 
 `           	`Afin d’optimiser les performances de notre modèle, nous avons testé de nombreuses architectures d’encoders sur notre modèle FaceNet. L’encoder qu’on a choisi finalement est « l’encoder bêta », qui nous a offert les meilleurs résultats en termes de précision (les résultats de chaque modèle sont indiqués dans le tableau récapitulatif) et de rapidité.
 
@@ -237,26 +186,26 @@ Les architectures que nous avons essayées sont décrites ci-dessous.
 
 
 ###### ALPHA ENCODER
-Cet encoder est assez prometteur bien qu’en léger overfitting. La factorisation de la couche conv 5\*5 en deux couches conv 5\*1 puis 1\*5 permet de réduire grandement le nombre de paramètres (10 au lieu de 25), et donc la rapidité d’entrainement. 
+Cet encoder est assez prometteur bien qu’en léger overfitting. La factorisation de la couche conv 5\*5 en deux couches conv 5\*1 puis 1\*5 permet de réduire grandement le nombre de paramètres (10 au lieu de 25), et donc la rapidité d’entrainement.  
 ###### 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.015.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model6.png>  
 
 
 ###### XCEPTION ENCODER
 Entrainer un modèle complexe sur beaucoup de données prend énormément de temps. C’est pourquoi nous avons essayé d’utiliser un modèle pré-entrainé (le modèle Xception de google). Le modèle a été entrainé sur une tâche de classification d’images. Nous avons donc repris ce modèle et les valeurs de ses paramètres, et avons ensuite « gelé » la moitié du modèle et entrainé l’autre moitié (en partant depuis les poids pré entrainés).
 
-Ce modèle a fortement overfitté le dataset car il y a trop de paramètres (près de 8 millions de paramètres entrainés et 14 millions de paramètres non entrainables). De plus, les performances sont décevantes car la tâche sur laquelle a été entrainé le Xception est trop éloigné de notre tâche d’encodage.
+Ce modèle a fortement overfitté le dataset car il y a trop de paramètres (près de 8 millions de paramètres entrainés et 14 millions de paramètres non entrainables). De plus, les performances sont décevantes car la tâche sur laquelle a été entrainé le Xception est trop éloigné de notre tâche d’encodage.   
 
 
 
-` `![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.015.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model7.png>  
 
 
 ###### BÊTA ENCODER
-C’est avec cet encoder qu’on obtient les meilleurs résultats. Séparer les données en entrée du bloc bêta permet d’obtenir un point de vue différent de l’entrée. Les trois sorties de convolution sont concaténées. Cela permet de ne pas perdre de données, mais augmente le nombre de paramètres. Pour compenser cet ajout de paramètres, on utilise une couche de Batch normalisation et une couche de Dropout (pour limiter l’overfitting). 
+C’est avec cet encoder qu’on obtient les meilleurs résultats. Séparer les données en entrée du bloc bêta permet d’obtenir un point de vue différent de l’entrée. Les trois sorties de convolution sont concaténées. Cela permet de ne pas perdre de données, mais augmente le nombre de paramètres. Pour compenser cet ajout de paramètres, on utilise une couche de Batch normalisation et une couche de Dropout (pour limiter l’overfitting).  
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.015.png)
-\*
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model8.png>  
+
 
 
 
@@ -266,8 +215,7 @@ Afin d’améliorer les performances de notre modèle, nous avons essayé d’aj
 Cependant, le modèle était lourd en calculs et donc trop long pour pouvoir l’implémenter sur le site, c’est pourquoi nous avons finalement conservé l’architecture Bêta, afin d’avoir un bon compromis précision-rapidité.
 
 
-
-` `*![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.015.png)*
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model.png>
 
 
 
@@ -306,12 +254,12 @@ Concrètement, que fait l’encoder ? L’encoder, attribue un vecteur représe
 
 Chaque point correspond à une image de visage, et chaque couleur à une personne. On remarque ainsi que les vecteurs correspondants à une même personne sont assez proches. L’utilisation de la distance euclidienne pour comparer deux personnes prend alors tout son sens.
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.028.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/viz1.png>
 
 
 ### CONCLUSION
 
 Notre système s’appuie donc, pour conclure, sur une pipeline de deep-learning que voici ci-dessous.
 
-![](Aspose.Words.e148c4a0-0357-478c-95de-9f103658d36e.029.png)
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/pika2.png>
 2020/2021 – ISEN 3 – PFA - Page  PAGE  \\* Arabic  \\* MERGEFORMAT 19/ NUMPAGES  \\* Arabic  \\* MERGEFORMAT 19
