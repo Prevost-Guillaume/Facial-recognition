@@ -94,7 +94,7 @@ Nous n’avons cependant pas retenu cette solution de fenêtre glissantes en rai
 ####### *FACE CLASSIFIER*
 Voici l’architecture utilisée pour le modèle de classification. Le principe est de réduire progressivement la dimension de l’image grâce à des couches de max-Pooling et des couches de convolutions. Ensuite, la décision en tant que telle est prise par les trois couches denses. Les deux perceptrons de la dernière couche valent chacun la probabilité que l’image soit une tête ou non.
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model1.png>
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model0.png>
 
 
 ####### *SLIDING WINDOWS*
@@ -129,7 +129,7 @@ Cette méthode étant plus précise et plus rapide (il faut de 0.14 à 0.17s pou
 ####### *REGION PROPOSAL NETWORK*
 Ce réseau utilise une architecture de type U-net. C’est-à-dire qu’il va progressivement diminuer la taille de l’image grâce à des max-pooling, puis réaugmenter la taille de l’image par paliers. La spécificité de ce réseau est qu’il possède des connexions résiduelles entre les images encodées et les images décodées de la même taille. Ces connexions permettent de ne pas perdre d’informations par la compression de l’image et ainsi d’obtenir des frontières bien délimitées. 
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model2.png>
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model1.png>
 ### Modèles de reconnaissance
 Concernant la partie de reconnaissance, nous avons également expérimenté plusieurs modèles avant d’obtenir un modèle suffisamment performant.
 
@@ -146,7 +146,7 @@ Ainsi, un tel auto-encoder apprend à transformer une image en un vecteur suffis
 
 Nous utilisons en entrée des images de taille 128\*128\*3 et au centre un vecteur de taille 100. Il y a donc une compression par un facteur 491. Cette architecture permet donc de construire et entrainer un encoder qui transforme une image en un vecteur plein de sens. Il est naturel de penser qu’une même personne a des vecteurs encodés grâce à ce modèle assez similaires  
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model3.png>  
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model2.png>  
 Cependant, le vecteur encodé ne sera pas spécifique à la tâche de reconnaissance et prête trop attention aux informations non nécessaires pour la détection mais importantes pour la reconstitution de l’image, comme l’orientation du visage. Effectivement, l’orientation du visage est importante pour pouvoir reconstruire le visage fidèlement, mais pas nécessaire pour la reconnaissance du visage.  
 
 Voyons quelques exemples de sorties de l’autoencoder entrainé. 
@@ -167,7 +167,7 @@ Le deuxième modèle que nous avons implémenté est un « siamese network » ou
 
 Lors de la phase d’entraînement, on donne en entrée soit deux images de deux personnes identiques, soit deux différentes, et le but est de minimiser l’erreur, en prédisant des distances petites pour deux images de la même personne, et à l’inverse des distances grandes lorsque ce sont deux personnes différentes. Lors de cette phase, les poids de l’encoder sont ajustés afin de minimiser la fonction coût et donc de répondre au mieux à cette tâche.  
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model4.png>  
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model3.png>  
 
 
 ###### MODEL FACENET
@@ -178,7 +178,7 @@ Comme pour le siamese network, on utilise le même encoder pour encoder les diff
 
 Ce modèle est entrainé avec trois images en entrée, et 0 en sortie, quelles que soient les images.  
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model5.png>  
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model4.png>  
 
 `           	`Afin d’optimiser les performances de notre modèle, nous avons testé de nombreuses architectures d’encoders sur notre modèle FaceNet. L’encoder qu’on a choisi finalement est « l’encoder bêta », qui nous a offert les meilleurs résultats en termes de précision (les résultats de chaque modèle sont indiqués dans le tableau récapitulatif) et de rapidité.
 
@@ -188,7 +188,7 @@ Les architectures que nous avons essayées sont décrites ci-dessous.
 ###### ALPHA ENCODER
 Cet encoder est assez prometteur bien qu’en léger overfitting. La factorisation de la couche conv 5\*5 en deux couches conv 5\*1 puis 1\*5 permet de réduire grandement le nombre de paramètres (10 au lieu de 25), et donc la rapidité d’entrainement.  
 ###### 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model6.png>  
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model5.png>  
 
 
 ###### XCEPTION ENCODER
@@ -198,13 +198,13 @@ Ce modèle a fortement overfitté le dataset car il y a trop de paramètres (pr�
 
 
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model7.png>  
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model6.png>  
 
 
 ###### BÊTA ENCODER
 C’est avec cet encoder qu’on obtient les meilleurs résultats. Séparer les données en entrée du bloc bêta permet d’obtenir un point de vue différent de l’entrée. Les trois sorties de convolution sont concaténées. Cela permet de ne pas perdre de données, mais augmente le nombre de paramètres. Pour compenser cet ajout de paramètres, on utilise une couche de Batch normalisation et une couche de Dropout (pour limiter l’overfitting).  
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model8.png>  
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model7.png>  
 
 
 
@@ -215,7 +215,7 @@ Afin d’améliorer les performances de notre modèle, nous avons essayé d’aj
 Cependant, le modèle était lourd en calculs et donc trop long pour pouvoir l’implémenter sur le site, c’est pourquoi nous avons finalement conservé l’architecture Bêta, afin d’avoir un bon compromis précision-rapidité.
 
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model.png>
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model8.png>
 
 
 
@@ -261,5 +261,6 @@ Chaque point correspond à une image de visage, et chaque couleur à une personn
 
 Notre système s’appuie donc, pour conclure, sur une pipeline de deep-learning que voici ci-dessous.
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/pika2.png>
-2020/2021 – ISEN 3 – PFA - Page  PAGE  \\* Arabic  \\* MERGEFORMAT 19/ NUMPAGES  \\* Arabic  \\* MERGEFORMAT 19
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/pika2.png>  
+
+2020/2021 – ISEN 3
