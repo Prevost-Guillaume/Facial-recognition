@@ -85,9 +85,9 @@ Cependant, avec cette méthode, une seule et même tête était détectée plusi
 
 |**Avant la nonMaxSuppression**|**Après la nonMaxSuppression**|
 | - | - |
-| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nnms1.png width=300 height=300> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nms1.png width=300 height=300> |
-| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nnms2.png width=300 height=350> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nms2.png width=300 height=350> |
-| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nnms3.png width=300 height=300> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nms3.png width=300 height=300> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nnms1.png width=200 height=200> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nms1.png width=200 height=200> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nnms2.png width=200 height=250> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nms2.png width=200 height=250> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nnms3.png width=200 height=250> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/nms3.png width=200 height=250> |
 
 
 Nous n’avons cependant pas retenu cette solution de fenêtre glissantes en raison de sa lenteur. Effectivement, il faut compter entre 1.2 et 1.4 secondes pour détecter les images sur la photo. Une telle lenteur s’explique en particulier par les nombreuses sous-images à classifier (il faut plus de 0.5s pour classifier les 324 sous-images ici), et l’algorithme de non-max suppression, qui prend entrer 0.1 et 0.15 secondes.
