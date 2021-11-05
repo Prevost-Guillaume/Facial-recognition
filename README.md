@@ -156,6 +156,10 @@ Voyons quelques exemples de sorties de l’autoencoder entrainé.
 
 |**Entrée de l’autoencoder**|**Sortie de l’autoencoder**|
 | - | - |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face1.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face2.png> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face3.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face4.png> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face5.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face6.png> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face7.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face8.png> |
 
 
 La compression affecte fortement la qualité de l’image de sortie, mais l’information générale de position du visage, la forme de la bouche, la place des yeux, etc. est conservée.  
@@ -181,14 +185,14 @@ Ce modèle est entrainé avec trois images en entrée, et 0 en sortie, quelles q
 
 <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model4.png>  
 
-`           	`Afin d’optimiser les performances de notre modèle, nous avons testé de nombreuses architectures d’encoders sur notre modèle FaceNet. L’encoder qu’on a choisi finalement est « l’encoder bêta », qui nous a offert les meilleurs résultats en termes de précision (les résultats de chaque modèle sont indiqués dans le tableau récapitulatif) et de rapidité.
+Afin d’optimiser les performances de notre modèle, nous avons testé de nombreuses architectures d’encoders sur notre modèle FaceNet. L’encoder qu’on a choisi finalement est « l’encoder bêta », qui nous a offert les meilleurs résultats en termes de précision (les résultats de chaque modèle sont indiqués dans le tableau récapitulatif) et de rapidité.
 
 Les architectures que nous avons essayées sont décrites ci-dessous.
 
 
 ###### ALPHA ENCODER
 Cet encoder est assez prometteur bien qu’en léger overfitting. La factorisation de la couche conv 5\*5 en deux couches conv 5\*1 puis 1\*5 permet de réduire grandement le nombre de paramètres (10 au lieu de 25), et donc la rapidité d’entrainement.  
-###### 
+
 <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model5.png>  
 
 
@@ -223,17 +227,13 @@ Cependant, le modèle était lourd en calculs et donc trop long pour pouvoir l�
 
 ###### RESULTATS
 
-Les modèles présentés ci-dessus donnent les résultats suivants.
+Les modèles présentés ci-dessus donnent les résultats suivants.  
+La performance (accuracy) des models est calculée de la façon suivante : __Accuracy = 100*[y = (y'>treshold)]/N__  
 
-La performance (accuracy) des modèles est calculée de la façon suivante : 
 
-y= y>treshold N×100
-
-y :True value 0 or 1
-
-` `y :Predicted value (float) 
-
-` `treshold :Chosen value (float) 
+y : True value 0 or 1  
+y' : Predicted value (float)  
+treshold : Chosen value (float)  
 
 
 |**Models**|**Accuracy (%)**|**Treshold**|
