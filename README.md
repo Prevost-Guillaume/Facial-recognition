@@ -156,10 +156,10 @@ Voyons quelques exemples de sorties de l’autoencoder entrainé.
 
 |**Entrée de l’autoencoder**|**Sortie de l’autoencoder**|
 | - | - |
-| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face1.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face2.png> |
-| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face3.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face4.png> |
-| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face5.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face6.png> |
-| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face7.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face8.png> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face1.png width=120 height=120> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face2.png width=120 height=120> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face3.png width=120 height=120> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face4.png width=120 height=120> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face5.png width=120 height=120> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face6.png width=120 height=120> |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face7.png width=120 height=120> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/face8.png width=120 height=120> |
 
 
 La compression affecte fortement la qualité de l’image de sortie, mais l’information générale de position du visage, la forme de la bouche, la place des yeux, etc. est conservée.  
