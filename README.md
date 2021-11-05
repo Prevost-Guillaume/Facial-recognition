@@ -38,7 +38,7 @@ Voici les aperçus de la solution que nous avons développé.
 *Page de login au site internet*
 
 
-##
+
 ## Réalisation reconnaissance faciale
 
 L’Intelligence Artificielle, est une science dans laquelle on essaie de permettre à une machine de reproduire des tâches réalisables par l’Homme. L’Intelligence Artificielle se compose de plusieurs domaines, dont un des principaux qui est le Machine Learning.
@@ -70,8 +70,8 @@ Regardons en détail les modèles de reconnaissance et de détection.
 
 
 
-### Modèles de détection
-###### Première proposition
+## Modèles de détection
+#### Première proposition
 Le but du modèle de détection est d’extraire les différentes têtes présentes sur une photo. Pour cela, nous avons testé différents modèles de réseaux de neurones convolutifs (cnn). Les réseaux de neurones convolutifs sont un type de réseau de neurones particulièrement adapté aux images. Il fonctionne en appliquant des filtres successifs sur l’image d’entrée.
 
 La première méthode que nous avons implémentée se base sur le principe de la fenêtre glissante. La tâche de détection est divisée en deux tâches plus simples :
@@ -92,19 +92,19 @@ Cependant, avec cette méthode, une seule et même tête était détectée plusi
 
 Nous n’avons cependant pas retenu cette solution de fenêtre glissantes en raison de sa lenteur. Effectivement, il faut compter entre 1.2 et 1.4 secondes pour détecter les images sur la photo. Une telle lenteur s’explique en particulier par les nombreuses sous-images à classifier (il faut plus de 0.5s pour classifier les 324 sous-images ici), et l’algorithme de non-max suppression, qui prend entrer 0.1 et 0.15 secondes.
 
-####### *FACE CLASSIFIER*
+###### *FACE CLASSIFIER*  
 Voici l’architecture utilisée pour le modèle de classification. Le principe est de réduire progressivement la dimension de l’image grâce à des couches de max-Pooling et des couches de convolutions. Ensuite, la décision en tant que telle est prise par les trois couches denses. Les deux perceptrons de la dernière couche valent chacun la probabilité que l’image soit une tête ou non.
 
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model0.png>
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model0.png>  
 
-
-####### *SLIDING WINDOWS*
+  
+###### *SLIDING WINDOWS*  
 En résumé, le principe de la sliding windows est expliqué ci-dessous : Une fenêtre parcourt l’image pour la découper en sous-images. Cet ensemble d’images est ensuite donné au classifier, puis au non-max-suppresseur. Il est ainsi possible de déterminer l’emplacement d’une tête.
 
 <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/pika1.png>
 
-###### ** Deuxième proposition.
-`	`La deuxième solution choisie fut de créer un modèle - nommé Region Proposal Network (RPN) – qui détermine en une seule fois l’emplacement des têtes sur une image. 
+#### Deuxième proposition.
+La deuxième solution choisie fut de créer un modèle - nommé Region Proposal Network (RPN) – qui détermine en une seule fois l’emplacement des têtes sur une image. 
 
 L’idée première était d’entrainer un modèle à proposer des régions d’intérêt susceptibles de contenir une tête, pour ensuite envoyer ces données au classifier et ainsi passer de 324 sous-images à une petite dizaine. Cependant, le modèle s’est avéré plus efficace que prévu, si bien que nous avons pu enlever le classifier derrière et ne garder que ce RPN. Nous avons entrainé ce modèle quatre jours complets sur la workstation du club Info de l’ISEN, sur beaucoup de données (plus de 25000 images). Cette quantité de données nous a permis d’éviter l’overfitting (c’est-à-dire le surapprentissage). 
 
@@ -120,18 +120,18 @@ Cette méthode étant plus précise et plus rapide (il faut de 0.14 à 0.17s pou
 
 |*Image fournie au modèle*|*Sortie du modèle*|*Traitement de la sortie*|
 | :-: | :-: | :-: |
+| <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/rpn1.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/rpn2.png> | <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/rpn3.png> |
 
 
 
 
 
 
-
-####### *REGION PROPOSAL NETWORK*
+###### *REGION PROPOSAL NETWORK*
 Ce réseau utilise une architecture de type U-net. C’est-à-dire qu’il va progressivement diminuer la taille de l’image grâce à des max-pooling, puis réaugmenter la taille de l’image par paliers. La spécificité de ce réseau est qu’il possède des connexions résiduelles entre les images encodées et les images décodées de la même taille. Ces connexions permettent de ne pas perdre d’informations par la compression de l’image et ainsi d’obtenir des frontières bien délimitées. 
 
 <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/model1.png>
-### Modèles de reconnaissance
+## Modèles de reconnaissance
 Concernant la partie de reconnaissance, nous avons également expérimenté plusieurs modèles avant d’obtenir un modèle suffisamment performant.
 
 La reconnaissance faciale repose en grande partie sur un modèle – que nous appellerons l’encoder – qui apprend à transformer une image d’un visage en un vecteur représentatif de ce visage.
