@@ -264,6 +264,6 @@ Notre système s’appuie donc, pour conclure, sur une pipeline de deep-learning
 
 <img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/pika2.png>  
 
-Pour simplifier la lecture de ce rapport ainsi que sa comprehension, voici l'architecture du projet.
-<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/tree.png>
+L'ensemble des fichiers de ce projet est résumé dans l'architecture ci-dessous.  
+<img src=https://github.com/Prevost-Guillaume/Facial-recognition/blob/main/images/tree.png height=400, width=300>  
 2020/2021 – ISEN 3
